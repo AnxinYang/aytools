@@ -1,43 +1,43 @@
-import { describe, it, expect, vi } from 'vitest';
-import { withMemorized } from '../memorize.js';
+import { describe, it, expect, vi } from "vitest";
+import { withMemorized } from "../memorize.js";
 
-describe('withMemorized', () => {
-  it('should return the cached result if within TTL', async () => {
+describe("withMemorized", () => {
+  it("should return the cached result if within TTL", async () => {
     const mockFn = vi.fn(async (num: number) => num * 2);
     const [memorizedFunction] = withMemorized(mockFn, { ttl: 1000 });
 
-    const result1 = await memorizedFunction('key1', 2);
-    const result2 = await memorizedFunction('key1', 2);
+    const result1 = await memorizedFunction("key1", 2);
+    const result2 = await memorizedFunction("key1", 2);
 
     expect(mockFn).toHaveBeenCalledTimes(1);
     expect(result1).toBe(4);
     expect(result2).toBe(4);
   });
 
-  it('should recompute the result if TTL has expired', async () => {
+  it("should recompute the result if TTL has expired", async () => {
     const mockFn = vi.fn(async (num: number) => num * 2);
     const [memorizedFunction] = withMemorized(mockFn, { ttl: 10 });
 
-    const result1 = await memorizedFunction('key1', 2);
+    const result1 = await memorizedFunction("key1", 2);
     await new Promise((resolve) => setTimeout(resolve, 20)); // Wait for TTL to expire
-    const result2 = await memorizedFunction('key1', 2);
+    const result2 = await memorizedFunction("key1", 2);
 
     expect(mockFn).toHaveBeenCalledTimes(2);
     expect(result1).toBe(4);
     expect(result2).toBe(4);
   });
 
-  it('should not exceed max cache size', async () => {
+  it("should not exceed max cache size", async () => {
     const mockFn = vi.fn(async (num: number) => num * 2);
     const [memorizedFunction] = withMemorized(mockFn, { maxCacheSize: 2 });
 
-    await memorizedFunction('key1', 2);
-    await memorizedFunction('key2', 3);
-    await memorizedFunction('key3', 4);
+    await memorizedFunction("key1", 2);
+    await memorizedFunction("key2", 3);
+    await memorizedFunction("key3", 4);
 
-    const result3 = await memorizedFunction('key3', 4);
-    const result2 = await memorizedFunction('key2', 3);
-    const result1 = await memorizedFunction('key1', 2);
+    const result3 = await memorizedFunction("key3", 4);
+    const result2 = await memorizedFunction("key2", 3);
+    const result1 = await memorizedFunction("key1", 2);
 
     // key1 should have been evicted
     expect(mockFn).toHaveBeenCalledTimes(4);
@@ -46,30 +46,31 @@ describe('withMemorized', () => {
     expect(result3).toBe(8);
   });
 
-  it('should allow importing and exporting memory', async () => {
+  it("should allow importing and exporting memory", async () => {
     const mockFn = vi.fn(async (num: number) => num * 2);
-    const [memorizedFunction, { importMemory, exportMemory }] = withMemorized(mockFn);
+    const [memorizedFunction, { exportMemory }] = withMemorized(mockFn);
 
-    const result1 = await memorizedFunction('key1', 2);
+    const result1 = await memorizedFunction("key1", 2);
     const exportedMemory = exportMemory();
 
-    const [newMemorizedFunction, { importMemory: newImportMemory }] = withMemorized(mockFn);
+    const [newMemorizedFunction, { importMemory: newImportMemory }] =
+      withMemorized(mockFn);
     newImportMemory(exportedMemory);
 
-    const result2 = await newMemorizedFunction('key1', 2);
+    const result2 = await newMemorizedFunction("key1", 2);
 
     expect(mockFn).toHaveBeenCalledTimes(1);
     expect(result1).toBe(4);
     expect(result2).toBe(4); // Should be retrieved from imported memory
   });
 
-  it('should clear the memory', async () => {
+  it("should clear the memory", async () => {
     const mockFn = vi.fn(async (num: number) => num * 2);
     const [memorizedFunction, { clearMemory }] = withMemorized(mockFn);
 
-    const result1 = await memorizedFunction('key1', 2);
+    const result1 = await memorizedFunction("key1", 2);
     clearMemory();
-    const result2 = await memorizedFunction('key1', 2);
+    const result2 = await memorizedFunction("key1", 2);
 
     expect(mockFn).toHaveBeenCalledTimes(2);
     expect(result1).toBe(4);
