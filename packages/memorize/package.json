@@ -22,8 +22,9 @@
   },
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "![Test](https://github.com/AnxinYang/aytools/actions/workflows/test.yml/badge.svg)",
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "devDependencies": {}
 }
