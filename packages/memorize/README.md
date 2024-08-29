@@ -1,6 +1,6 @@
 # `withMemorized`
 
-![Build Status](https://github.com/AnxinYang/aytools/actions/workflows/ci.yml/badge.svg)
+![Test](https://github.com/AnxinYang/aytools/actions/workflows/test.yml/badge.svg)
 
 A TypeScript utility function that wraps a given function with a caching layer, allowing you to memorize function results with optional time-to-live (TTL) and maximum cache size limits. This is particularly useful for optimizing expensive function calls by avoiding redundant computations.
 
