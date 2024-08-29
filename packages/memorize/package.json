@@ -22,5 +22,8 @@
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "publishConfig": {
+    "access": "public"
+  }
 }
