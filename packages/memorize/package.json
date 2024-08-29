@@ -6,6 +6,8 @@
   "module": "dist/index.js",
   "source": "src/index.ts",
   "types": "dist/index.d.ts",
+  "repository": "https://github.com/AnxinYang/aytools/tree/main/packages/memorize",
+  "homepage": "https://github.com/AnxinYang/aytools/tree/main/packages/memorize",
   "files": [
     "dist/**/*",
     "src/**/*",
@@ -21,7 +23,7 @@
     "play": "tsx ./src/play.ts"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "description": "![Test](https://github.com/AnxinYang/aytools/actions/workflows/test.yml/badge.svg)",
   "publishConfig": {
     "access": "public"
