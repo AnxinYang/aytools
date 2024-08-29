@@ -17,6 +17,5 @@
     },
     "composite": true,
     "isolatedModules": true,
-    "isolatedDeclarations": true
   }
 }

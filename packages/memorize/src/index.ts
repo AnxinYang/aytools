@@ -1,0 +1,1 @@
+export {withMemorized} from "./internal/memorize";

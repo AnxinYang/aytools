@@ -1,5 +1,5 @@
 {
-  "name": "@aytools/cache",
+  "name": "@aytools/memorize",
   "version": "1.0.0",
   "type": "module",
   "main": "dist/index.js",
@@ -13,7 +13,12 @@
     "package.json"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc --build",
+    "clean": "tsc --build --clean",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "play": "tsx ./src/play.ts"
   },
   "author": "",
   "license": "ISC",
