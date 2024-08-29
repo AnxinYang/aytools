@@ -1,1 +1,1 @@
-export {withMemorized} from "./internal/memorize";
+export {withMemorized} from "./internal/memorize.js";

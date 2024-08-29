@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "moduleResolution": "node",
+    "moduleResolution": "NodeNext",
     "esModuleInterop": true,
     "strict": true,
     "noUnusedLocals": true,
@@ -17,5 +17,6 @@
     },
     "composite": true,
     "isolatedModules": true,
-  }
+  },
+  "exclude": ["node_modules", "dist", "coverage","**/play.ts"]
 }
