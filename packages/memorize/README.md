@@ -42,7 +42,7 @@ const [memorizedCalculation] = withMemorized(expensiveCalculation, {
 });
 
 // Use the memorized function
-const result = await memorizedCalculation('calc-1', 10);
+const result = await memorizedCalculation('key', 10);
 console.log(result);  // Outputs: 20
 ```
 
@@ -90,7 +90,7 @@ A tuple consisting of:
 
 1. **`memorizedFunction`**: The function wrapped with the caching layer.
 2. **`MemoryControlFunctions`**: An object with the following methods:
-   - **`importMemory(memory: Record<string, MemorizedResult<ReturnType<FunctionType>>>)`**: Imports a memory object into the current cache.
+   - **`importMemory(memory: Record<string, MemorizedResult<ReturnType<FunctionType>>>)`**: Imports a memory object into the current memory, this will replace the current memory.
    - **`exportMemory(): Record<string, MemorizedResult<ReturnType<FunctionType>>>`**: Exports the current memory object.
    - **`clearMemory(): void`**: Clears all cached results.
 
