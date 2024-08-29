@@ -15,13 +15,13 @@ A TypeScript utility function that wraps a given function with a caching layer, 
 To install the package, you can use npm or yarn:
 
 ```bash
-npm install your-package-name
+npm install @aytools/memorize
 ```
 
 or
 
 ```bash
-yarn add your-package-name
+yarn add @aytools/memorize
 ```
 
 ## Usage
@@ -29,7 +29,7 @@ yarn add your-package-name
 ### Basic Usage
 
 ```typescript
-import { withMemorized } from 'your-package-name';
+import { withMemorized } from '@aytools/memorize';
 
 async function expensiveCalculation(x: number): Promise<number> {
   // Simulate an expensive calculation
@@ -99,7 +99,7 @@ A tuple consisting of:
 Here is an example of how you might use the `withMemorized` utility in a real-world scenario:
 
 ```typescript
-import { withMemorized } from 'your-package-name';
+import { withMemorized } from '@aytools/memorize';
 
 async function fetchDataFromAPI(endpoint: string): Promise<any> {
   const response = await fetch(endpoint);
