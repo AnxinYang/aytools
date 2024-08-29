@@ -55,7 +55,7 @@ interface MemoryControlFunctions<FunctionType extends InputFunctionType> {
    * @param memory - The memory object to import.
    */
   importMemory: (
-    memory: Record<string, MemorizedResult<ReturnType<FunctionType>>>
+    memoryToImport: Record<string, MemorizedResult<ReturnType<FunctionType>>>
   ) => void;
 
   /**
